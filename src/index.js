@@ -1,10 +1,16 @@
 // require('dotenv').config()
 import dotenv from "dotenv"
+import connectDB from "./db/index.js";
 import { app } from "./app.js"
 
 dotenv.config({
     path: './.env'
 })
+
+// Testing route
+app.get('/abc', (req, res) => {
+  res.send('You accessed the /abc route!');
+});
 
 // import express from "express"
 console.log("====== PORT",process.env.PORT)
@@ -14,8 +20,14 @@ console.log("====== PORT",process.env.PORT)
 // try catch because asynch function return promises
 
 
-app.listen(process.env.PORT || 4000, () =>{
-    console.log(`Server is running at port ${process.env.PORT}`)
+connectDB()
+.then(() => {
+    app.listen(process.env.PORT || 4000, () =>{
+        console.log(`Server is running at port ${process.env.PORT}`)
+    })
+})
+.catch((err) => {
+    console.log("mongo db connected !!! ",err)
 })
 
 
