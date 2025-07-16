@@ -11,7 +11,7 @@ const connectDB = async() => {
 
     }catch(error){
 
-         console.error("Mongodb connect error ",error);
+        console.error("Mongodb connect error ",error);
         // we can exit process because of so many process
         process.exit(1)
 

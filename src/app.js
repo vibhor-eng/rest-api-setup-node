@@ -36,5 +36,10 @@ app.use(cookieParser())//accespt cokkie any where like hmne usercontroller me ki
 
 //routes import
 
+import userRouter from './routes/user.router.js'
+
+//routes declaration
+app.use("/api/v1/users",userRouter)
+
  
 export { app }
